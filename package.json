@@ -1,0 +1,19 @@
+{
+  "name": "core-js-oop",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ripetchor/core-js-oop.git"
+  },
+  "author": "ripetchor",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/ripetchor/core-js-oop/issues"
+  },
+  "homepage": "https://github.com/ripetchor/core-js-oop#readme"
+}
