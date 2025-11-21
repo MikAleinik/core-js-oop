@@ -2,13 +2,13 @@ import { it } from 'node:test';
 
 /**
  * @param {string} name
- * @param {Function} fn
+ * @param {(ctx:import('node:test').TestContext) => void} fn
  * @returns {void}
  */
 export function optional(name, fn) {
   it(name, (ctx) => {
     try {
-      fn();
+      fn(ctx);
     } catch (error) {
       if (error && error.message === 'Not implemented') {
         ctx.skip();
