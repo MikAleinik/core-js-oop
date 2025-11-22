@@ -8,6 +8,9 @@ export default defineConfig([
     plugins: { js },
     extends: ['js/recommended'],
     languageOptions: { globals: globals.node },
-    rules: { 'no-console': 'error' },
+    // rules: { 'no-console': 'error' },
   },
 ]);
+
+// console.log(js);
+// console.log(js.configs.recommended.rules);
