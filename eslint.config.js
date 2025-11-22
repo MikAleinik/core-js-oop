@@ -14,7 +14,6 @@ export default [
     rules: {
       ...js.configs.recommended.rules,
       'no-console': 'error',
-      'no-unused-vars': 'off',
       'no-unused-private-class-members': 'off',
       'prettier/prettier': 'error',
     },

@@ -65,7 +65,7 @@ export class Developer {
    * @param {number} salary - Base salary.
    * @param {number} bonus - Bonus amount.
    */
-  constructor(name, salary, bonus) {
+  constructor(/* name, salary, bonus */) {
     throwNotImplementedError();
   }
 }
@@ -79,7 +79,7 @@ export class Manager {
    * @param {number} salary - Base salary.
    * @param {number} bonus - Bonus amount.
    */
-  constructor(name, salary, bonus) {
+  constructor(/* name, salary, bonus */) {
     throwNotImplementedError();
   }
 }
@@ -92,7 +92,7 @@ export class Intern {
    * @param {string} name - Intern name.
    * @param {number} salary - Intern salary.
    */
-  constructor(name, salary) {
+  constructor(/* name, salary */) {
     throwNotImplementedError();
   }
 }
@@ -114,7 +114,7 @@ export class Department {
    * @returns {void}
    * @throws {Error} Throws: "Only instances of Employee can be added".
    */
-  addEmployee(employee) {
+  addEmployee(/* employee */) {
     throwNotImplementedError();
   }
 
@@ -136,7 +136,7 @@ export class Department {
    * @param {string} role
    * @returns {Employee[]}
    */
-  getEmployeesByRole(role) {
+  getEmployeesByRole(/* role */) {
     throwNotImplementedError();
   }
 

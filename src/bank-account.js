@@ -12,8 +12,8 @@ export class BankAccount {
   /**
    * @param {number} initialBalance - initial balance
    */
-  constructor(initialBalance) {
-    this.#balance = initialBalance;
+  constructor(/* initialBalance */) {
+    throwNotImplementedError();
   }
 
   /**
@@ -33,7 +33,7 @@ export class BankAccount {
    * const account = new BankAccount(50);
    * account.deposit(0); // throws Error: 'Deposit must be positive'
    */
-  deposit(amount) {
+  deposit(/* amount */) {
     throwNotImplementedError();
   }
 
@@ -54,7 +54,7 @@ export class BankAccount {
    * const account = new BankAccount(50);
    * account.withdraw(60); // throws Error: 'Insufficient funds'
    */
-  withdraw(amount) {
+  withdraw(/* amount */) {
     throwNotImplementedError();
   }
 

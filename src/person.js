@@ -44,7 +44,7 @@ export class Person {
    * @param {number} weight
    * @param {number} height
    */
-  constructor(weight, height) {
+  constructor(/* weight, height */) {
     throwNotImplementedError();
   }
 

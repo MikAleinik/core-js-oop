@@ -4,7 +4,7 @@ export class Engine {
   /**
    * @param {number} power
    */
-  constructor(power) {
+  constructor(/* power */) {
     throwNotImplementedError();
   }
 
@@ -30,7 +30,7 @@ export class Car {
   /**
    * @param {Engine} engine
    */
-  constructor(engine) {
+  constructor(/* engine */) {
     throwNotImplementedError();
   }
 
@@ -47,7 +47,7 @@ export class Car {
    * @param {Engine} engine
    * @returns {void}
    */
-  changeEngine(engine) {
+  changeEngine(/* engine */) {
     throwNotImplementedError();
   }
 }

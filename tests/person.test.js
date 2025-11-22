@@ -67,7 +67,7 @@ describe('User', () => {
     assert.strictEqual(Person.averageHeight(), expected);
   });
 
-  optional('should return 0 for averages when no person exist', () => {
+  optional('should return 0 for averages when no person created', () => {
     assert.strictEqual(Person.count, 0);
     assert.strictEqual(Person.totalWeight, 0);
     assert.strictEqual(Person.totalHeight, 0);
