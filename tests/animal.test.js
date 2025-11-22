@@ -11,9 +11,15 @@ describe('Animal', () => {
     assert.throws(() => animal.makeSound(), /Abstract method "makeSound" not implemented/);
   });
 
-  optional('Dog, Cat and Cow classes should extend Animal class', () => {
+  optional('Dog should extend Animal class', () => {
     assert.ok(new Dog() instanceof Animal);
+  });
+
+  optional('Cat should extend Animal class', () => {
     assert.ok(new Cat() instanceof Animal);
+  });
+
+  optional('Cow should extend Animal class', () => {
     assert.ok(new Cow() instanceof Animal);
   });
 

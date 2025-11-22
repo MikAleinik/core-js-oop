@@ -1,5 +1,5 @@
 import assert from 'node:assert';
-import { describe, it } from 'node:test';
+import { describe } from 'node:test';
 
 import { Department, Developer, Employee, Intern, Manager } from '../src/department.js';
 import { optional } from '../utils/optional.js';
@@ -13,18 +13,16 @@ describe('Department', () => {
       assert.throws(() => employee.getRole(), /Abstract method "getRole" not implemented/);
     });
 
-    optional('Developer, Manager and Intern classes should extend Employee class', () => {
-      assert.ok(
-        new Developer('Lana', 1000, 500) instanceof Employee,
-        'Developer should extend Employee'
-      );
+    optional('Developer should extend Employee class', () => {
+      assert.ok(new Developer('Lana', 1000, 500) instanceof Employee);
+    });
 
-      assert.ok(
-        new Manager('Nicole', 1000, 500) instanceof Employee,
-        'Manager should extend Employee'
-      );
+    optional('Manager should extend Employee class', () => {
+      assert.ok(new Manager('Lana', 1000, 500) instanceof Employee);
+    });
 
-      assert.ok(new Intern('Elsa', 1000) instanceof Employee, 'Intern should extend Employee');
+    optional('Intern should extend Employee class', () => {
+      assert.ok(new Intern('Lana', 1000) instanceof Employee);
     });
 
     optional('Developer instance should return correct name, role and salary', () => {
