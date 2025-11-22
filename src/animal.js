@@ -2,13 +2,18 @@ import { throwNotImplementedError } from '../utils/throw-not-implemented-error.j
 
 /**
  * @abstract
+ *
  * Represents any animal.
  * Do not modify this class.
  */
-export class AbstractAnimal {
+export class Animal {
   /**
+   * Should return the sound of the specific animal.
+   * Must be implemented in subclasses.
+   *
    * @public
    * @abstract
+   * @returns {string}
    * @throws {Error}
    */
   makeSound() {
@@ -16,58 +21,35 @@ export class AbstractAnimal {
   }
 }
 
-export class Dog extends AbstractAnimal {
-  /**
-   * @public
-   * @returns {string}
-   *
-   * @example
-   * const dog = new Dog()
-   * dog.makeSound() => 'Woof'
-   */
-  makeSound() {
+/**
+ * Must correctly extend Animal.
+ * Sound: "Woof"
+ */
+export class Dog {
+  // Remove this constructor once the class is implemented
+  constructor() {
     throwNotImplementedError();
   }
 }
 
-export class Cat extends AbstractAnimal {
-  /**
-   * @public
-   * @returns {string}
-   *
-   * @example
-   * const cat = new Cat()
-   * cat.makeSound() => 'Meow'
-   */
-  makeSound() {
+/**
+ * Must correctly extend Animal.
+ * Sound: "Meow"
+ */
+export class Cat {
+  // Remove this constructor once the class is implemented
+  constructor() {
     throwNotImplementedError();
   }
 }
 
-export class Sheep extends AbstractAnimal {
-  /**
-   * @public
-   * @returns {string}
-   *
-   * @example
-   * const sheep = new Sheep()
-   * sheep.makeSound() => 'Baa'
-   */
-  makeSound() {
-    throwNotImplementedError();
-  }
-}
-
-export class Cow extends AbstractAnimal {
-  /**
-   * @public
-   * @returns {string}
-   *
-   * @example
-   * const cow = new Cow()
-   * cow.makeSound() => 'Moo'
-   */
-  makeSound() {
+/**
+ * Must correctly extend Animal.
+ * Sound: "Moo"
+ */
+export class Cow {
+  // Remove this constructor once the class is implemented
+  constructor() {
     throwNotImplementedError();
   }
 }
