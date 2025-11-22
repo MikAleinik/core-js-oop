@@ -11,6 +11,12 @@ export default [
       globals: globals.node,
     },
     plugins: { prettier: prettierPlugin },
-    rules: { ...js.configs.recommended.rules, 'prettier/prettier': 'error' },
+    rules: {
+      ...js.configs.recommended.rules,
+      'no-console': 'error',
+      'no-unused-vars': 'off',
+      'no-unused-private-class-members': 'off',
+      'prettier/prettier': 'error',
+    },
   },
 ];
