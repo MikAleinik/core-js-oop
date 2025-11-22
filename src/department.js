@@ -1,0 +1,163 @@
+import { throwNotImplementedError } from '../utils/throw-not-implemented-error.js';
+
+/**
+ * @abstract
+ *
+ * Represents any employee.
+ * Do not modify this class.
+ */
+export class Employee {
+  /**
+   * @type {string}
+   */
+  #name;
+
+  /**
+   * @param {string} name - Employee name.
+   */
+  constructor(name) {
+    this.#name = name;
+  }
+
+  /**
+   * Returns the employee's name.
+   *
+   * @public
+   * @returns {string}
+   */
+  get name() {
+    return this.#name;
+  }
+
+  /**
+   * Returns employee's salary (with bonus if applicable).
+   * Must be implemented in subclasses.
+   *
+   * @public
+   * @abstract
+   * @returns {number}
+   * @throws {Error}
+   */
+  getSalary() {
+    throw new Error('Abstract method "getSalary" not implemented');
+  }
+
+  /**
+   * Returns the role (class name).
+   * Must be implemented in subclasses.
+   *
+   * @public
+   * @abstract
+   * @returns {string}
+   * @throws {Error}
+   */
+  getRole() {
+    throw new Error('Abstract method "getRole" not implemented');
+  }
+}
+
+/**
+ * Must correctly extend Employee.
+ */
+export class Developer {
+  /**
+   * @param {string} name - Developer name.
+   * @param {number} salary - Base salary.
+   * @param {number} bonus - Bonus amount.
+   */
+  constructor(name, salary, bonus) {
+    throwNotImplementedError();
+  }
+}
+
+/**
+ * Must correctly extend Employee.
+ */
+export class Manager {
+  /**
+   * @param {string} name - Manager name.
+   * @param {number} salary - Base salary.
+   * @param {number} bonus - Bonus amount.
+   */
+  constructor(name, salary, bonus) {
+    throwNotImplementedError();
+  }
+}
+
+/**
+ * Must correctly extend Employee.
+ */
+export class Intern {
+  /**
+   * @param {string} name - Intern name.
+   * @param {number} salary - Intern salary.
+   */
+  constructor(name, salary) {
+    throwNotImplementedError();
+  }
+}
+
+/**
+ * Represents a department that stores employees.
+ */
+export class Department {
+  /**
+   * @type {Employee[]}
+   */
+  #employees = [];
+
+  /**
+   * Adds an employee to the department.
+   *
+   * @public
+   * @param {unknown} employee - Object to add. Must be instance of Employee, otherwise an error is thrown.
+   * @returns {void}
+   * @throws {Error} Throws: "Only instances of Employee can be added".
+   */
+  addEmployee(employee) {
+    throwNotImplementedError();
+  }
+
+  /**
+   * Returns array of all employees in the department.
+   *
+   * @public
+   * @returns {Employee[]}
+   */
+  getEmployees() {
+    throwNotImplementedError();
+  }
+
+  /**
+   * Returns all employees whose role matches the provided string.
+   * Role must correspond to getRole(), which returns constructor name.
+   *
+   * @public
+   * @param {string} role
+   * @returns {Employee[]}
+   */
+  getEmployeesByRole(role) {
+    throwNotImplementedError();
+  }
+
+  /**
+   * Returns the sum of salaries of all employees.
+   *
+   * @public
+   * @returns {number} Total salary amount.
+   */
+  getTotalSalary() {
+    throwNotImplementedError();
+  }
+
+  /**
+   * Returns the average salary of all employees in the department.
+   * If the department has no employees, returns 0.
+   *
+   * @public
+   * @returns {number}
+   */
+  getAverageSalary() {
+    throwNotImplementedError();
+  }
+}
