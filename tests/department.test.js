@@ -1,17 +1,32 @@
 import assert from 'node:assert';
 import { describe } from 'node:test';
 
-import { Department, Developer, Employee, Intern, Manager } from '../src/department.js';
+import {
+  Department,
+  Developer,
+  Employee,
+  Intern,
+  Manager,
+} from '../src/department.js';
 import { optional } from '../utils/optional.js';
 
 describe('Department', () => {
   describe('Employee subclasses', () => {
-    optional('Abstract Employee methods throw errors when not implemented', () => {
-      const employee = new Employee('Emma');
+    optional(
+      'Abstract Employee methods throw errors when not implemented',
+      () => {
+        const employee = new Employee('Emma');
 
-      assert.throws(() => employee.getSalary(), /Abstract method "getSalary" not implemented/);
-      assert.throws(() => employee.getRole(), /Abstract method "getRole" not implemented/);
-    });
+        assert.throws(
+          () => employee.getSalary(),
+          /Abstract method "getSalary" not implemented/
+        );
+        assert.throws(
+          () => employee.getRole(),
+          /Abstract method "getRole" not implemented/
+        );
+      }
+    );
 
     optional('Developer should extend Employee class', () => {
       assert.ok(new Developer('Lana', 1000, 500) instanceof Employee);
@@ -25,29 +40,38 @@ describe('Department', () => {
       assert.ok(new Intern('Lana', 1000) instanceof Employee);
     });
 
-    optional('Developer instance should return correct name, role and salary', () => {
-      const dev = new Developer('Lana', 1000, 500);
+    optional(
+      'Developer instance should return correct name, role and salary',
+      () => {
+        const dev = new Developer('Lana', 1000, 500);
 
-      assert.strictEqual(dev.name, 'Lana');
-      assert.strictEqual(dev.getRole(), Developer.name);
-      assert.strictEqual(dev.getSalary(), 1500);
-    });
+        assert.strictEqual(dev.name, 'Lana');
+        assert.strictEqual(dev.getRole(), Developer.name);
+        assert.strictEqual(dev.getSalary(), 1500);
+      }
+    );
 
-    optional('Manager instance should return correct name, role and salary', () => {
-      const mgr = new Manager('Nicole', 1000, 500);
+    optional(
+      'Manager instance should return correct name, role and salary',
+      () => {
+        const mgr = new Manager('Nicole', 1000, 500);
 
-      assert.strictEqual(mgr.name, 'Nicole');
-      assert.strictEqual(mgr.getRole(), Manager.name);
-      assert.strictEqual(mgr.getSalary(), 1500);
-    });
+        assert.strictEqual(mgr.name, 'Nicole');
+        assert.strictEqual(mgr.getRole(), Manager.name);
+        assert.strictEqual(mgr.getSalary(), 1500);
+      }
+    );
 
-    optional('Intern instance should return correct name, role and salary', () => {
-      const intern = new Intern('Elsa', 1000);
+    optional(
+      'Intern instance should return correct name, role and salary',
+      () => {
+        const intern = new Intern('Elsa', 1000);
 
-      assert.strictEqual(intern.name, 'Elsa');
-      assert.strictEqual(intern.getRole(), Intern.name);
-      assert.strictEqual(intern.getSalary(), 1000);
-    });
+        assert.strictEqual(intern.name, 'Elsa');
+        assert.strictEqual(intern.getRole(), Intern.name);
+        assert.strictEqual(intern.getSalary(), 1000);
+      }
+    );
   });
 
   describe('Department instance', () => {
@@ -66,10 +90,23 @@ describe('Department', () => {
     optional('should throw when adding invalid employee', () => {
       const dept = new Department();
 
-      const invalidValues = [null, undefined, 123, 'string', true, false, {}, [], () => {}];
+      const invalidValues = [
+        null,
+        undefined,
+        123,
+        'string',
+        true,
+        false,
+        {},
+        [],
+        () => {},
+      ];
 
       for (const invalid of invalidValues) {
-        assert.throws(() => dept.addEmployee(invalid), /Only instances of Employee can be added/);
+        assert.throws(
+          () => dept.addEmployee(invalid),
+          /Only instances of Employee can be added/
+        );
       }
     });
 

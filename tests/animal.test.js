@@ -5,11 +5,17 @@ import { Animal, Cat, Cow, Dog } from '../src/animal.js';
 import { optional } from '../utils/optional.js';
 
 describe('Animal', () => {
-  optional('should throw error when "makeSound" is called on Animal class', () => {
-    const animal = new Animal();
+  optional(
+    'should throw error when "makeSound" is called on Animal class',
+    () => {
+      const animal = new Animal();
 
-    assert.throws(() => animal.makeSound(), /Abstract method "makeSound" not implemented/);
-  });
+      assert.throws(
+        () => animal.makeSound(),
+        /Abstract method "makeSound" not implemented/
+      );
+    }
+  );
 
   optional('Dog should extend Animal class', () => {
     assert.ok(new Dog() instanceof Animal);

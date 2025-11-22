@@ -11,20 +11,23 @@ describe('User', () => {
     Person.totalHeight = 0;
   });
 
-  optional('should correctly construct a person and update count and totals', () => {
-    const u1 = new Person(70, 180);
-    const u2 = new Person(80, 200);
+  optional(
+    'should correctly construct a person and update count and totals',
+    () => {
+      const u1 = new Person(70, 180);
+      const u2 = new Person(80, 200);
 
-    assert.strictEqual(u1.weight, 70);
-    assert.strictEqual(u1.height, 180);
+      assert.strictEqual(u1.weight, 70);
+      assert.strictEqual(u1.height, 180);
 
-    assert.strictEqual(u2.weight, 80);
-    assert.strictEqual(u2.height, 200);
+      assert.strictEqual(u2.weight, 80);
+      assert.strictEqual(u2.height, 200);
 
-    assert.strictEqual(Person.count, 2);
-    assert.strictEqual(Person.totalWeight, 150);
-    assert.strictEqual(Person.totalHeight, 380);
-  });
+      assert.strictEqual(Person.count, 2);
+      assert.strictEqual(Person.totalWeight, 150);
+      assert.strictEqual(Person.totalHeight, 380);
+    }
+  );
 
   optional('should update "totalWeight" when "weight" changes', () => {
     const u1 = new Person(70, 180);
