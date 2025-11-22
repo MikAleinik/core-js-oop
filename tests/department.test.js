@@ -6,7 +6,7 @@ import { optional } from '../utils/optional.js';
 
 describe('Department', () => {
   describe('Employee subclasses', () => {
-    optional('Employee instance "getSalary" and "getRole" throw errors', () => {
+    optional('Abstract Employee methods throw errors when not implemented', () => {
       const employee = new Employee('Emma');
 
       assert.throws(() => employee.getSalary(), /Abstract method "getSalary" not implemented/);
