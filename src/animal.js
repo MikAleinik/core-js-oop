@@ -28,15 +28,8 @@ export class Animal {
 export class Dog {
   // Remove this constructor once the class is implemented
   constructor() {
-    console.log('qqq');
-    const q = 1;
     throwNotImplementedError();
   }
-}
-
-function foo() {}
-
-if (foo) {
 }
 
 /**
