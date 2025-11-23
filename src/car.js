@@ -2,7 +2,11 @@ import { throwNotImplementedError } from '../utils/throw-not-implemented-error.j
 
 export class Engine {
   /**
-   * @param {number} power
+   * @param {number} power - The initial power of the engine in horsepower.
+   *
+   * @example
+   * const engine = new Engine(100);
+   * engine.power; => 100
    */
   constructor(/* power */) {
     throwNotImplementedError();
@@ -11,6 +15,10 @@ export class Engine {
   /**
    * @public
    * @returns {number}
+   *
+   * @example
+   * const engine = new Engine(120);
+   * engine.power; => 120
    */
   get power() {
     throwNotImplementedError();
@@ -20,6 +28,11 @@ export class Engine {
    * @public
    * @param {number} power
    * @returns {number}
+   *
+   * @example
+   * const engine = new Engine(100);
+   * engine.power = 150;
+   * engine.power; => 150
    */
   set power(power) {
     throwNotImplementedError();
@@ -29,6 +42,11 @@ export class Engine {
 export class Car {
   /**
    * @param {Engine} engine
+   *
+   * @example
+   * const engine = new Engine(100);
+   * const car = new Car(engine);
+   * car.getEnginePower(); => 100
    */
   constructor(/* engine */) {
     throwNotImplementedError();
@@ -37,6 +55,11 @@ export class Car {
   /**
    * @public
    * @returns {number}
+   *
+   * @example
+   * const engine = new Engine(120);
+   * const car = new Car(engine);
+   * car.getEnginePower(); => 120
    */
   getEnginePower() {
     throwNotImplementedError();
@@ -46,6 +69,13 @@ export class Car {
    * @public
    * @param {Engine} engine
    * @returns {void}
+   *
+   * @example
+   * const engine1 = new Engine(80);
+   * const engine2 = new Engine(200);
+   * const car = new Car(engine1);
+   * car.changeEngine(engine2);
+   * car.getEnginePower(); => 200
    */
   changeEngine(/* engine */) {
     throwNotImplementedError();
