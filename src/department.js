@@ -121,7 +121,7 @@ export class Department {
    * @public
    * @param {unknown} employee - Object to add. Must be instance of Employee, otherwise an error is thrown.
    * @returns {void}
-   * @throws {Error} Throws: "Only instances of Employee can be added".
+   * @throws {Error} throws Error: "Only instances of Employee can be added".
    */
   addEmployee(/* employee */) {
     throwNotImplementedError();
