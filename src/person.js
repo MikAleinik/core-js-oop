@@ -23,18 +23,32 @@ export class Person {
   static totalHeight = 0;
 
   /**
+   * Returns the average weight of all created persons.
+   *
    * @public
    * @static
    * @returns {number}
+   *
+   * @example
+   * Person.count = 2;
+   * Person.totalWeight = 150;
+   * Person.averageWeight(); => 75
    */
   static averageWeight() {
     throwNotImplementedError();
   }
 
   /**
+   * Returns the average height of all created persons.
+   *
    * @public
    * @static
    * @returns {number}
+   *
+   * @example
+   * Person.count = 2;
+   * Person.totalHeight = 380;
+   * Person.averageHeight(); => 190
    */
   static averageHeight() {
     throwNotImplementedError();
@@ -51,6 +65,10 @@ export class Person {
   /**
    * @public
    * @returns {number}
+   *
+   * @example
+   * const p = new Person(70, 180);
+   * p.weight; => 70
    */
   get weight() {
     throwNotImplementedError();
@@ -60,6 +78,11 @@ export class Person {
    * @public
    * @param {number} weight
    * @returns {number}
+   *
+   * @example
+   * const p = new Person(70, 180);
+   * p.weight = 90;
+   * p.weight; => 90
    */
   set weight(weight) {
     throwNotImplementedError();
@@ -68,6 +91,10 @@ export class Person {
   /**
    * @public
    * @returns {number}
+   *
+   * @example
+   * const p = new Person(70, 180);
+   * p.height; => 180
    */
   get height() {
     throwNotImplementedError();
@@ -77,6 +104,11 @@ export class Person {
    * @public
    * @param {number} height
    * @returns {number}
+   *
+   * @example
+   * const p = new Person(70, 180);
+   * p.height = 200;
+   * p.height; => 200
    */
   set height(height) {
     throwNotImplementedError();
