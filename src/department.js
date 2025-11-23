@@ -44,7 +44,9 @@ export class Employee {
    * @throws {Error}
    */
   getSalary() {
-    throw new Error('Abstract method "getSalary" not implemented');
+    throw new Error(
+      'Method "getSalary" is abstract and must be implemented in a subclass'
+    );
   }
 
   /**
@@ -57,7 +59,9 @@ export class Employee {
    * @throws {Error}
    */
   getRole() {
-    throw new Error('Abstract method "getRole" not implemented');
+    throw new Error(
+      'Method "getRole" is abstract and must be implemented in a subclass'
+    );
   }
 }
 
