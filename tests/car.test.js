@@ -2,6 +2,7 @@ import assert from 'node:assert';
 import { describe } from 'node:test';
 
 import { Car, Engine } from '../src/car.js';
+import { assertNoComments } from '../utils/assert-no-comments.js';
 import { optional } from '../utils/optional.js';
 
 describe('Car and Engine', () => {
@@ -10,6 +11,8 @@ describe('Car and Engine', () => {
       const engine = new Engine(100);
 
       assert.strictEqual(engine.power, 100);
+
+      assertNoComments(Engine);
     });
 
     optional('should update power via setter', () => {
@@ -17,6 +20,8 @@ describe('Car and Engine', () => {
       engine.power = 200;
 
       assert.strictEqual(engine.power, 200);
+
+      assertNoComments(Engine);
     });
   });
 
@@ -26,6 +31,8 @@ describe('Car and Engine', () => {
       const car = new Car(engine);
 
       assert.strictEqual(car.getEnginePower(), 100);
+
+      [Car, Engine].forEach((fn) => assertNoComments(fn));
     });
 
     optional('"getEnginePower" should reflect updated engine power', () => {
@@ -34,6 +41,8 @@ describe('Car and Engine', () => {
       engine.power = 150;
 
       assert.strictEqual(car.getEnginePower(), 150);
+
+      [Car, Engine].forEach((fn) => assertNoComments(fn));
     });
 
     optional('"changeEngine" should correctly change the engine', () => {
@@ -46,6 +55,8 @@ describe('Car and Engine', () => {
       car.changeEngine(engine2);
 
       assert.strictEqual(car.getEnginePower(), 200);
+
+      [Car, Engine].forEach((fn) => assertNoComments(fn));
     });
 
     optional('should reflect new engine updates after change', () => {
@@ -57,6 +68,8 @@ describe('Car and Engine', () => {
       engine2.power = 120;
 
       assert.strictEqual(car.getEnginePower(), 120);
+
+      [Car, Engine].forEach((fn) => assertNoComments(fn));
     });
   });
 });

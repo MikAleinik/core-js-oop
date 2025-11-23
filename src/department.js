@@ -44,7 +44,9 @@ export class Employee {
    * @throws {Error}
    */
   getSalary() {
-    throw new Error('Abstract method "getSalary" not implemented');
+    throw new Error(
+      'Method "getSalary" is abstract and must be implemented in a subclass'
+    );
   }
 
   /**
@@ -57,7 +59,9 @@ export class Employee {
    * @throws {Error}
    */
   getRole() {
-    throw new Error('Abstract method "getRole" not implemented');
+    throw new Error(
+      'Method "getRole" is abstract and must be implemented in a subclass'
+    );
   }
 }
 
@@ -117,7 +121,7 @@ export class Department {
    * @public
    * @param {unknown} employee - Object to add. Must be instance of Employee, otherwise an error is thrown.
    * @returns {void}
-   * @throws {Error} Throws: "Only instances of Employee can be added".
+   * @throws {Error} throws Error: "Only instances of Employee can be added".
    */
   addEmployee(/* employee */) {
     throwNotImplementedError();

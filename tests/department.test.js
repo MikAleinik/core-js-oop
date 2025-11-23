@@ -8,6 +8,7 @@ import {
   Intern,
   Manager,
 } from '../src/department.js';
+import { assertNoComments } from '../utils/assert-no-comments.js';
 import { optional } from '../utils/optional.js';
 
 describe('Department', () => {
@@ -18,6 +19,8 @@ describe('Department', () => {
         /An object of an abstract "Employee" class cannot be created/
       );
       assert.ok(new Developer('Lana', 1000, 500) instanceof Employee);
+
+      assertNoComments(Developer);
     });
 
     optional('Manager should extend Employee class', () => {
@@ -26,6 +29,8 @@ describe('Department', () => {
         /An object of an abstract "Employee" class cannot be created/
       );
       assert.ok(new Manager('Lana', 1000, 500) instanceof Employee);
+
+      assertNoComments(Manager);
     });
 
     optional('Intern should extend Employee class', () => {
@@ -34,6 +39,8 @@ describe('Department', () => {
         /An object of an abstract "Employee" class cannot be created/
       );
       assert.ok(new Intern('Lana', 1000) instanceof Employee);
+
+      assertNoComments(Intern);
     });
 
     optional(
@@ -50,6 +57,8 @@ describe('Department', () => {
           getRoleStr.includes('constructor'),
           'The role corresponds to the class name. To obtain the role, you must use a call to the class constructor'
         );
+
+        assertNoComments(Developer);
       }
     );
 
@@ -67,6 +76,8 @@ describe('Department', () => {
           getRoleStr.includes('constructor'),
           'The role corresponds to the class name. To obtain the role, you must use a call to the class constructor'
         );
+
+        assertNoComments(Manager);
       }
     );
 
@@ -84,6 +95,8 @@ describe('Department', () => {
           getRoleStr.includes('constructor'),
           'The role corresponds to the class name. To obtain the role, you must use a call to the class constructor'
         );
+
+        assertNoComments(Intern);
       }
     );
   });
@@ -99,6 +112,8 @@ describe('Department', () => {
       dept.addEmployee(dev2);
 
       assert.strictEqual(dept.getEmployees().length, 2);
+
+      [Department, Developer].forEach((fn) => assertNoComments(fn));
     });
 
     optional('should throw when adding invalid employee', () => {
@@ -124,6 +139,8 @@ describe('Department', () => {
           /Only instances of Employee can be added/
         );
       }
+
+      [Department, Developer].forEach((fn) => assertNoComments(fn));
     });
 
     optional('should calculate total department salary', () => {
@@ -138,6 +155,8 @@ describe('Department', () => {
       dept.addEmployee(intern);
 
       assert.strictEqual(dept.getTotalSalary(), 4000);
+
+      [Department, Developer, Intern].forEach((fn) => assertNoComments(fn));
     });
 
     optional('should filter employees by role', () => {
@@ -158,6 +177,10 @@ describe('Department', () => {
 
       const interns = dept.getEmployeesByRole(Intern.name);
       assert.deepStrictEqual(interns, [intern]);
+
+      [Department, Developer, Intern, Manager].forEach((fn) =>
+        assertNoComments(fn)
+      );
     });
 
     optional('should calculate average department salary', () => {
@@ -172,12 +195,16 @@ describe('Department', () => {
       dept.addEmployee(dev3);
 
       assert.strictEqual(dept.getAverageSalary(), 2000);
+
+      [Department, Developer].forEach((fn) => assertNoComments(fn));
     });
 
     optional('should return 0 average salary for empty department', () => {
       const dept = new Department();
 
       assert.strictEqual(dept.getAverageSalary(), 0);
+
+      assertNoComments(Developer);
     });
   });
 });

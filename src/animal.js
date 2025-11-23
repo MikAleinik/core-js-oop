@@ -31,7 +31,9 @@ export class Animal {
    * @throws {Error}
    */
   makeSound() {
-    throw new Error('Abstract method "makeSound" not implemented');
+    throw new Error(
+      'Method "makeSound" is abstract and must be implemented in a subclass'
+    );
   }
 }
 
