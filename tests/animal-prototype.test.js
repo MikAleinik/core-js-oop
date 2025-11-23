@@ -2,6 +2,7 @@ import assert from 'node:assert';
 import { describe, mock } from 'node:test';
 
 import { Animal, Cat, Cow, Dog } from '../src/animal-prototype.js';
+import { assertNoComments } from '../utils/assert-no-comments.js';
 import { optional } from '../utils/optional.js';
 
 function isClass(fn) {
@@ -54,6 +55,8 @@ describe('Animal prototype', () => {
       assert.strictEqual(Object.hasOwn(dog1, 'makeSound'), false);
       assert.strictEqual(Object.hasOwn(dog2, 'makeSound'), false);
       assert.strictEqual(Object.is(dog1.makeSound, dog2.makeSound), true);
+
+      assertNoComments(Dog);
     }
   );
 
@@ -66,6 +69,8 @@ describe('Animal prototype', () => {
       assert.strictEqual(Object.hasOwn(cat1, 'makeSound'), false);
       assert.strictEqual(Object.hasOwn(cat2, 'makeSound'), false);
       assert.strictEqual(Object.is(cat1.makeSound, cat2.makeSound), true);
+
+      assertNoComments(Cat);
     }
   );
 
@@ -78,6 +83,8 @@ describe('Animal prototype', () => {
       assert.strictEqual(Object.hasOwn(cow1, 'makeSound'), false);
       assert.strictEqual(Object.hasOwn(cow2, 'makeSound'), false);
       assert.strictEqual(Object.is(cow1.makeSound, cow2.makeSound), true);
+
+      assertNoComments(Cow);
     }
   );
 
@@ -90,6 +97,8 @@ describe('Animal prototype', () => {
       assert.strictEqual(Object.hasOwn(animal1, 'makeSound'), false);
       assert.strictEqual(Object.hasOwn(animal2, 'makeSound'), false);
       assert.strictEqual(Object.is(animal1.makeSound, animal2.makeSound), true);
+
+      assertNoComments(Animal);
     }
   );
 
@@ -110,6 +119,8 @@ describe('Animal prototype', () => {
 
     assert.strictEqual(animal.name, 'Generic');
     assert.strictEqual(animal.makeSound(), 'Unknown sound');
+
+    [Dog, Cat, Cow, Animal].forEach((fn) => assertNoComments(fn));
   });
 
   optional('Instances must have correct constructor', () => {
@@ -122,6 +133,8 @@ describe('Animal prototype', () => {
     assert.strictEqual(cat.constructor, Cat);
     assert.strictEqual(cow.constructor, Cow);
     assert.strictEqual(animal.constructor, Animal);
+
+    [Dog, Cat, Cow, Animal].forEach((fn) => assertNoComments(fn));
   });
 
   optional('"Dog" must correctly inherit from Animal', () => {
@@ -133,6 +146,8 @@ describe('Animal prototype', () => {
     assert.ok(dog instanceof Dog);
     assert.ok(dog instanceof Animal);
     assert.strictEqual(dog.isAnimal, true);
+
+    assertNoComments(Dog);
   });
 
   optional('"Cat" must correctly inherit from Animal', () => {
@@ -144,6 +159,8 @@ describe('Animal prototype', () => {
     assert.strictEqual(cat.isAnimal, true);
     assert.ok(cat instanceof Cat);
     assert.ok(cat instanceof Animal);
+
+    assertNoComments(Cat);
   });
 
   optional('"Cow" must correctly inherit from Animal', () => {
@@ -155,6 +172,8 @@ describe('Animal prototype', () => {
     assert.strictEqual(cow.isAnimal, true);
     assert.ok(cow instanceof Cow);
     assert.ok(cow instanceof Animal);
+
+    assertNoComments(Cow);
   });
 
   optional('Prototypes are distinct objects', () => {
