@@ -12,31 +12,27 @@ import { optional } from '../utils/optional.js';
 
 describe('Department', () => {
   describe('Employee subclasses', () => {
-    optional(
-      'Abstract Employee methods throw errors when not implemented',
-      () => {
-        const employee = new Employee('Emma');
-
-        assert.throws(
-          () => employee.getSalary(),
-          /Abstract method "getSalary" not implemented/
-        );
-        assert.throws(
-          () => employee.getRole(),
-          /Abstract method "getRole" not implemented/
-        );
-      }
-    );
-
     optional('Developer should extend Employee class', () => {
+      assert.throws(
+        () => new Employee('Lana'),
+        /An object of an abstract "Employee" class cannot be created/
+      );
       assert.ok(new Developer('Lana', 1000, 500) instanceof Employee);
     });
 
     optional('Manager should extend Employee class', () => {
+      assert.throws(
+        () => new Employee('Lana'),
+        /An object of an abstract "Employee" class cannot be created/
+      );
       assert.ok(new Manager('Lana', 1000, 500) instanceof Employee);
     });
 
     optional('Intern should extend Employee class', () => {
+      assert.throws(
+        () => new Employee('Lana'),
+        /An object of an abstract "Employee" class cannot be created/
+      );
       assert.ok(new Intern('Lana', 1000) instanceof Employee);
     });
 
@@ -45,9 +41,15 @@ describe('Department', () => {
       () => {
         const dev = new Developer('Lana', 1000, 500);
 
-        assert.strictEqual(dev.name, 'Lana');
+        assert.strictEqual(dev.employeeName, 'Lana');
         assert.strictEqual(dev.getRole(), Developer.name);
         assert.strictEqual(dev.getSalary(), 1500);
+
+        const getRoleStr = dev.getRole.toString();
+        assert.ok(
+          getRoleStr.includes('constructor'),
+          'The role corresponds to the class name. To obtain the role, you must use a call to the class constructor'
+        );
       }
     );
 
@@ -56,9 +58,15 @@ describe('Department', () => {
       () => {
         const mgr = new Manager('Nicole', 1000, 500);
 
-        assert.strictEqual(mgr.name, 'Nicole');
+        assert.strictEqual(mgr.employeeName, 'Nicole');
         assert.strictEqual(mgr.getRole(), Manager.name);
         assert.strictEqual(mgr.getSalary(), 1500);
+
+        const getRoleStr = mgr.getRole.toString();
+        assert.ok(
+          getRoleStr.includes('constructor'),
+          'The role corresponds to the class name. To obtain the role, you must use a call to the class constructor'
+        );
       }
     );
 
@@ -67,9 +75,15 @@ describe('Department', () => {
       () => {
         const intern = new Intern('Elsa', 1000);
 
-        assert.strictEqual(intern.name, 'Elsa');
+        assert.strictEqual(intern.employeeName, 'Elsa');
         assert.strictEqual(intern.getRole(), Intern.name);
         assert.strictEqual(intern.getSalary(), 1000);
+
+        const getRoleStr = intern.getRole.toString();
+        assert.ok(
+          getRoleStr.includes('constructor'),
+          'The role corresponds to the class name. To obtain the role, you must use a call to the class constructor'
+        );
       }
     );
   });
@@ -90,6 +104,9 @@ describe('Department', () => {
     optional('should throw when adding invalid employee', () => {
       const dept = new Department();
 
+      const dev = new Developer('Lana', 1000, 500);
+      dept.addEmployee(dev);
+
       const invalidValues = [
         null,
         undefined,
@@ -101,7 +118,6 @@ describe('Department', () => {
         [],
         () => {},
       ];
-
       for (const invalid of invalidValues) {
         assert.throws(
           () => dept.addEmployee(invalid),

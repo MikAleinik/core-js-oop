@@ -8,6 +8,20 @@ import { throwNotImplementedError } from '../utils/throw-not-implemented-error.j
  */
 export class Animal {
   /**
+   * Basic class constructor.
+   * Cannot be invoked without inheritance.
+   *
+   * @abstract
+   * @throws {Error}
+   */
+  constructor() {
+    if (this.constructor === Animal) {
+      throw new Error(
+        'An object of an abstract "Animal" class cannot be created'
+      );
+    }
+  }
+  /**
    * Should return the sound of the specific animal.
    * Must be implemented in subclasses.
    *

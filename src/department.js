@@ -10,13 +10,18 @@ export class Employee {
   /**
    * @type {string}
    */
-  #name;
+  #employeeName;
 
   /**
-   * @param {string} name - Employee name.
+   * @param {string} employeeName - Employee name.
    */
-  constructor(name) {
-    this.#name = name;
+  constructor(employeeName) {
+    if (this.constructor === Employee) {
+      throw new Error(
+        'An object of an abstract "Employee" class cannot be created'
+      );
+    }
+    this.#employeeName = employeeName;
   }
 
   /**
@@ -25,8 +30,8 @@ export class Employee {
    * @public
    * @returns {string}
    */
-  get name() {
-    return this.#name;
+  get employeeName() {
+    return this.#employeeName;
   }
 
   /**
