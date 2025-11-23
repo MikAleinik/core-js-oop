@@ -41,9 +41,15 @@ describe('Department', () => {
       () => {
         const dev = new Developer('Lana', 1000, 500);
 
-        assert.strictEqual(dev.name, 'Lana');
+        assert.strictEqual(dev.employeeName, 'Lana');
         assert.strictEqual(dev.getRole(), Developer.name);
         assert.strictEqual(dev.getSalary(), 1500);
+
+        const getRoleStr = dev.getRole.toString();
+        assert.ok(
+          getRoleStr.includes('constructor'),
+          'The role corresponds to the class name. To obtain the role, you must use a call to the class constructor'
+        );
       }
     );
 
@@ -52,9 +58,15 @@ describe('Department', () => {
       () => {
         const mgr = new Manager('Nicole', 1000, 500);
 
-        assert.strictEqual(mgr.name, 'Nicole');
+        assert.strictEqual(mgr.employeeName, 'Nicole');
         assert.strictEqual(mgr.getRole(), Manager.name);
         assert.strictEqual(mgr.getSalary(), 1500);
+
+        const getRoleStr = mgr.getRole.toString();
+        assert.ok(
+          getRoleStr.includes('constructor'),
+          'The role corresponds to the class name. To obtain the role, you must use a call to the class constructor'
+        );
       }
     );
 
@@ -63,9 +75,15 @@ describe('Department', () => {
       () => {
         const intern = new Intern('Elsa', 1000);
 
-        assert.strictEqual(intern.name, 'Elsa');
+        assert.strictEqual(intern.employeeName, 'Elsa');
         assert.strictEqual(intern.getRole(), Intern.name);
         assert.strictEqual(intern.getSalary(), 1000);
+
+        const getRoleStr = intern.getRole.toString();
+        assert.ok(
+          getRoleStr.includes('constructor'),
+          'The role corresponds to the class name. To obtain the role, you must use a call to the class constructor'
+        );
       }
     );
   });
