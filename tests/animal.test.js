@@ -5,27 +5,27 @@ import { Animal, Cat, Cow, Dog } from '../src/animal.js';
 import { optional } from '../utils/optional.js';
 
 describe('Animal', () => {
-  optional(
-    'should throw error when "makeSound" is called on Animal class',
-    () => {
-      const animal = new Animal();
-
-      assert.throws(
-        () => animal.makeSound(),
-        /Abstract method "makeSound" not implemented/
-      );
-    }
-  );
-
   optional('Dog should extend Animal class', () => {
+    assert.throws(
+      () => new Animal(),
+      /An object of an abstract "Animal" class cannot be created/
+    );
     assert.ok(new Dog() instanceof Animal);
   });
 
   optional('Cat should extend Animal class', () => {
+    assert.throws(
+      () => new Animal(),
+      /An object of an abstract "Animal" class cannot be created/
+    );
     assert.ok(new Cat() instanceof Animal);
   });
 
   optional('Cow should extend Animal class', () => {
+    assert.throws(
+      () => new Animal(),
+      /An object of an abstract "Animal" class cannot be created/
+    );
     assert.ok(new Cow() instanceof Animal);
   });
 
