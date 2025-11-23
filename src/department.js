@@ -16,6 +16,11 @@ export class Employee {
    * @param {string} name - Employee name.
    */
   constructor(name) {
+    if (this.constructor === Employee) {
+      throw new Error(
+        'An object of an abstract "Employee" class cannot be created'
+      );
+    }
     this.#name = name;
   }
 

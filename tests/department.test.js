@@ -12,31 +12,27 @@ import { optional } from '../utils/optional.js';
 
 describe('Department', () => {
   describe('Employee subclasses', () => {
-    optional(
-      'Abstract Employee methods throw errors when not implemented',
-      () => {
-        const employee = new Employee('Emma');
-
-        assert.throws(
-          () => employee.getSalary(),
-          /Abstract method "getSalary" not implemented/
-        );
-        assert.throws(
-          () => employee.getRole(),
-          /Abstract method "getRole" not implemented/
-        );
-      }
-    );
-
     optional('Developer should extend Employee class', () => {
+      assert.throws(
+        () => new Employee('Lana'),
+        /An object of an abstract "Employee" class cannot be created/
+      );
       assert.ok(new Developer('Lana', 1000, 500) instanceof Employee);
     });
 
     optional('Manager should extend Employee class', () => {
+      assert.throws(
+        () => new Employee('Lana'),
+        /An object of an abstract "Employee" class cannot be created/
+      );
       assert.ok(new Manager('Lana', 1000, 500) instanceof Employee);
     });
 
     optional('Intern should extend Employee class', () => {
+      assert.throws(
+        () => new Employee('Lana'),
+        /An object of an abstract "Employee" class cannot be created/
+      );
       assert.ok(new Intern('Lana', 1000) instanceof Employee);
     });
 
@@ -90,6 +86,9 @@ describe('Department', () => {
     optional('should throw when adding invalid employee', () => {
       const dept = new Department();
 
+      const dev = new Developer('Lana', 1000, 500);
+      dept.addEmployee(dev);
+
       const invalidValues = [
         null,
         undefined,
@@ -101,7 +100,6 @@ describe('Department', () => {
         [],
         () => {},
       ];
-
       for (const invalid of invalidValues) {
         assert.throws(
           () => dept.addEmployee(invalid),
