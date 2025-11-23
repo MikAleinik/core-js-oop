@@ -2,11 +2,7 @@ import { throwNotImplementedError } from '../utils/throw-not-implemented-error.j
 
 export class Engine {
   /**
-   * @param {number} power - The initial power of the engine in horsepower.
-   *
-   * @example
-   * const engine = new Engine(100);
-   * engine.power; => 100
+   * @param {number} power
    */
   constructor(/* power */) {
     throwNotImplementedError();
