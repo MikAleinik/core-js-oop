@@ -1,23 +1,24 @@
 {
   "name": "core-js-oop",
   "version": "1.0.0",
-  "description": "",
+  "description": "Core JS OOP",
   "scripts": {
-    "test": "node --test",
+    "test": "npm run lint && node --test",
     "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
     "format": "prettier . --write"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ripetchor/core-js-oop.git"
+    "url": "git+https://github.com/rolling-scopes-school/core-js-oop.git"
   },
-  "author": "ripetchor",
+  "author": "ripetchor, MikAleinik",
   "license": "MIT",
   "type": "module",
   "bugs": {
-    "url": "https://github.com/ripetchor/core-js-oop/issues"
+    "url": "https://github.com/rolling-scopes-school/core-js-oop/issues"
   },
-  "homepage": "https://github.com/ripetchor/core-js-oop#readme",
+  "homepage": "https://github.com/rolling-scopes-school/core-js-oop#readme",
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "eslint": "^9.39.1",
