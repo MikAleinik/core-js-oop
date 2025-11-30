@@ -134,6 +134,8 @@ describe('Animal prototype', () => {
 
     assert.ok(dog instanceof Animal);
     assert.ok(dog instanceof Dog);
+    assert.ok(Animal.prototype.isPrototypeOf(dog));
+    assert.ok(dog.constructor.name === 'Dog', 'The constructor name must remain valid after inheritance');
     assert.strictEqual(dog.isAnimal, true);
   });
 
@@ -142,6 +144,8 @@ describe('Animal prototype', () => {
 
     assert.ok(cat instanceof Animal);
     assert.ok(cat instanceof Cat);
+    assert.ok(Animal.prototype.isPrototypeOf(cat));
+    assert.ok(cat.constructor.name === 'Cat', 'The constructor name must remain valid after inheritance');
     assert.strictEqual(cat.isAnimal, true);
   });
 
@@ -150,6 +154,8 @@ describe('Animal prototype', () => {
 
     assert.ok(cow instanceof Animal);
     assert.ok(cow instanceof Cow);
+    assert.ok(Animal.prototype.isPrototypeOf(cow));
+    assert.ok(cow.constructor.name === 'Cow', 'The constructor name must remain valid after inheritance');
     assert.strictEqual(cow.isAnimal, true);
   });
 
