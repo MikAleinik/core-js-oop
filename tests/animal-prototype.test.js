@@ -21,6 +21,7 @@ describe('Animal prototype', () => {
   optional(
     '"Animal" must be implemented as a constructor function, not a class',
     () => {
+      const instance = new Animal();
       assert.strictEqual(isClass(Animal), false);
     }
   );
@@ -28,6 +29,7 @@ describe('Animal prototype', () => {
   optional(
     '"Dog" must be implemented as a constructor function, not a class',
     () => {
+      const instance = new Dog();
       assert.strictEqual(isClass(Dog), false);
     }
   );
@@ -35,6 +37,7 @@ describe('Animal prototype', () => {
   optional(
     '"Cat" must be implemented as a constructor function, not a class',
     () => {
+      const instance = new Cat();
       assert.strictEqual(isClass(Cat), false);
     }
   );
@@ -42,6 +45,7 @@ describe('Animal prototype', () => {
   optional(
     '"Cow" must be implemented as a constructor function, not a class',
     () => {
+      const instance = new Cow();
       assert.strictEqual(isClass(Cow), false);
     }
   );
@@ -150,8 +154,12 @@ describe('Animal prototype', () => {
   });
 
   optional('Prototypes are distinct objects', () => {
+    const animal = new Animal('animal');
+    const cat = new Cat('cat');
     assert.notStrictEqual(Animal.prototype, Cat.prototype);
+    const dog = new Dog('dog');
     assert.notStrictEqual(Animal.prototype, Dog.prototype);
+    const cow = new Cow('cow');
     assert.notStrictEqual(Animal.prototype, Cow.prototype);
 
     assert.notStrictEqual(Cat.prototype, Dog.prototype);
