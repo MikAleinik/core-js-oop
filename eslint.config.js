@@ -18,4 +18,5 @@ export default [
       'prettier/prettier': 'error',
     },
   },
+  { ignores: ['tests/**'] },
 ];
