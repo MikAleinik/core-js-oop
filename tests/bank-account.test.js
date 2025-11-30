@@ -10,8 +10,6 @@ describe('BankAccount', () => {
     const account = new BankAccount(100);
 
     assert.strictEqual(account.getBalance(), 100);
-
-    assertNoComments(BankAccount);
   });
 
   optional('should deposit money', () => {
@@ -19,8 +17,6 @@ describe('BankAccount', () => {
     account.deposit(30);
 
     assert.strictEqual(account.getBalance(), 80);
-
-    assertNoComments(BankAccount);
   });
 
   optional('should throw error on non-positive deposit', (ctx) => {
@@ -35,8 +31,6 @@ describe('BankAccount', () => {
         assert.throws(() => account.deposit(0), /Deposit must be positive/);
       }
     }
-
-    assertNoComments(BankAccount);
   });
 
   optional('should withdraw money', () => {
@@ -44,8 +38,6 @@ describe('BankAccount', () => {
     account.withdraw(40);
 
     assert.strictEqual(account.getBalance(), 60);
-
-    assertNoComments(BankAccount);
   });
 
   optional('should throw error when withdrawing more than balance', (ctx) => {
@@ -60,8 +52,6 @@ describe('BankAccount', () => {
         assert.throws(() => account.withdraw(60), /Insufficient funds/);
       }
     }
-
-    assertNoComments(BankAccount);
   });
 
   optional('should return correct balance with getBalance()', (ctx) => {
@@ -76,7 +66,13 @@ describe('BankAccount', () => {
     account.withdraw(50);
 
     assert.strictEqual(account.getBalance(), 150);
+  });
 
-    assertNoComments(BankAccount);
+  optional('should not contain commentaries', () => {
+    const acc = new BankAccount(0);
+
+    [acc.deposit, acc.getBalance, acc.withdraw].forEach((fn) =>
+      assertNoComments(fn)
+    );
   });
 });
