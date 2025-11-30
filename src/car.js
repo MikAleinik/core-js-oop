@@ -17,7 +17,7 @@ export class Engine {
    * engine.power; => 120
    */
   get power() {
-    throwNotImplementedError();
+    return null;
   }
 
   /**

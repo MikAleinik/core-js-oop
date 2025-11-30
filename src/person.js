@@ -71,7 +71,7 @@ export class Person {
    * p.weight; => 70
    */
   get weight() {
-    throwNotImplementedError();
+    return null;
   }
 
   /**
@@ -97,7 +97,7 @@ export class Person {
    * p.height; => 180
    */
   get height() {
-    throwNotImplementedError();
+    return null;
   }
 
   /**
