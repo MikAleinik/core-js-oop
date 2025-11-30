@@ -1,5 +1,5 @@
 import assert from 'node:assert';
-import { describe, mock } from 'node:test';
+import { describe } from 'node:test';
 
 import { Animal, Cat, Cow, Dog } from '../src/animal-prototype.js';
 import { assertNoComments } from '../utils/assert-no-comments.js';
@@ -55,8 +55,6 @@ describe('Animal prototype', () => {
       assert.strictEqual(Object.hasOwn(dog1, 'makeSound'), false);
       assert.strictEqual(Object.hasOwn(dog2, 'makeSound'), false);
       assert.strictEqual(Object.is(dog1.makeSound, dog2.makeSound), true);
-
-      assertNoComments(Dog);
     }
   );
 
@@ -69,8 +67,6 @@ describe('Animal prototype', () => {
       assert.strictEqual(Object.hasOwn(cat1, 'makeSound'), false);
       assert.strictEqual(Object.hasOwn(cat2, 'makeSound'), false);
       assert.strictEqual(Object.is(cat1.makeSound, cat2.makeSound), true);
-
-      assertNoComments(Cat);
     }
   );
 
@@ -83,8 +79,6 @@ describe('Animal prototype', () => {
       assert.strictEqual(Object.hasOwn(cow1, 'makeSound'), false);
       assert.strictEqual(Object.hasOwn(cow2, 'makeSound'), false);
       assert.strictEqual(Object.is(cow1.makeSound, cow2.makeSound), true);
-
-      assertNoComments(Cow);
     }
   );
 
@@ -97,8 +91,6 @@ describe('Animal prototype', () => {
       assert.strictEqual(Object.hasOwn(animal1, 'makeSound'), false);
       assert.strictEqual(Object.hasOwn(animal2, 'makeSound'), false);
       assert.strictEqual(Object.is(animal1.makeSound, animal2.makeSound), true);
-
-      assertNoComments(Animal);
     }
   );
 
@@ -119,8 +111,6 @@ describe('Animal prototype', () => {
 
     assert.strictEqual(animal.name, 'Generic');
     assert.strictEqual(animal.makeSound(), 'Unknown sound');
-
-    [Dog, Cat, Cow, Animal].forEach((fn) => assertNoComments(fn));
   });
 
   optional('Instances must have correct constructor', () => {
@@ -133,57 +123,62 @@ describe('Animal prototype', () => {
     assert.strictEqual(cat.constructor, Cat);
     assert.strictEqual(cow.constructor, Cow);
     assert.strictEqual(animal.constructor, Animal);
-
-    [Dog, Cat, Cow, Animal].forEach((fn) => assertNoComments(fn));
   });
 
   optional('"Dog" must correctly inherit from Animal', () => {
     const dog = new Dog('Rex');
 
-    const mockAnimal = mock.fn(Animal);
-    assert.strictEqual(mockAnimal.mock.callCount(), 1);
-
-    assert.ok(dog instanceof Dog);
     assert.ok(dog instanceof Animal);
+    assert.ok(dog instanceof Dog);
     assert.strictEqual(dog.isAnimal, true);
-
-    assertNoComments(Dog);
   });
 
   optional('"Cat" must correctly inherit from Animal', () => {
     const cat = new Cat('Whiskers');
 
-    const mockAnimal = mock.fn(Animal);
-    assert.strictEqual(mockAnimal.mock.callCount(), 1);
-
-    assert.strictEqual(cat.isAnimal, true);
-    assert.ok(cat instanceof Cat);
     assert.ok(cat instanceof Animal);
-
-    assertNoComments(Cat);
+    assert.ok(cat instanceof Cat);
+    assert.strictEqual(cat.isAnimal, true);
   });
 
   optional('"Cow" must correctly inherit from Animal', () => {
     const cow = new Cow('Bessie');
 
-    const mockAnimal = mock.fn(Animal);
-    assert.strictEqual(mockAnimal.mock.callCount(), 1);
-
-    assert.strictEqual(cow.isAnimal, true);
-    assert.ok(cow instanceof Cow);
     assert.ok(cow instanceof Animal);
-
-    assertNoComments(Cow);
+    assert.ok(cow instanceof Cow);
+    assert.strictEqual(cow.isAnimal, true);
   });
 
   optional('Prototypes are distinct objects', () => {
     assert.notStrictEqual(Animal.prototype, Cat.prototype);
     assert.notStrictEqual(Animal.prototype, Dog.prototype);
-    assert.notStrictEqual(Animal.prototype, Cat.prototype);
     assert.notStrictEqual(Animal.prototype, Cow.prototype);
 
-    assert.notStrictEqual(Dog.prototype, Cat.prototype);
+    assert.notStrictEqual(Cat.prototype, Dog.prototype);
     assert.notStrictEqual(Cat.prototype, Cow.prototype);
+
+    assert.notStrictEqual(Dog.prototype, Cat.prototype);
     assert.notStrictEqual(Dog.prototype, Cow.prototype);
+
+    assert.notStrictEqual(Cow.prototype, Cat.prototype);
+    assert.notStrictEqual(Cow.prototype, Dog.prototype);
+  });
+
+  optional('should not contain commentaries', () => {
+    const animal = new Animal('');
+    const dog = new Dog('');
+    const cat = new Cat('');
+    const cow = new Cow('');
+
+    [
+      Animal,
+      Dog,
+      Cat,
+      Cow,
+      animal.makeSound,
+      dog.makeSound,
+      cat.makeSound,
+      cow.makeSound,
+    ].forEach((fn) => assertNoComments(fn));
   });
 });

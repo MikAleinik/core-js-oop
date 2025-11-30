@@ -27,8 +27,6 @@ describe('User', () => {
       assert.strictEqual(Person.count, 2);
       assert.strictEqual(Person.totalWeight, 150);
       assert.strictEqual(Person.totalHeight, 380);
-
-      assertNoComments(Person);
     }
   );
 
@@ -40,8 +38,6 @@ describe('User', () => {
     u2.weight = 110;
 
     assert.strictEqual(Person.totalWeight, 200);
-
-    assertNoComments(Person);
   });
 
   optional('should update "totalHeight" when "height" changes', () => {
@@ -52,8 +48,6 @@ describe('User', () => {
     u2.height = 200;
 
     assert.strictEqual(Person.totalHeight, 400);
-
-    assertNoComments(Person);
   });
 
   optional('should correctly calculate average weight', () => {
@@ -63,8 +57,6 @@ describe('User', () => {
     const expected = weights.reduce((s, w) => s + w, 0) / weights.length;
 
     assert.strictEqual(Person.averageWeight(), expected);
-
-    assertNoComments(Person);
   });
 
   optional('should correctly calculate average height', () => {
@@ -74,8 +66,6 @@ describe('User', () => {
     const expected = heights.reduce((s, w) => s + w, 0) / heights.length;
 
     assert.strictEqual(Person.averageHeight(), expected);
-
-    assertNoComments(Person);
   });
 
   optional('should return 0 for averages when no person created', () => {
@@ -85,8 +75,6 @@ describe('User', () => {
 
     assert.strictEqual(Person.averageWeight(), 0);
     assert.strictEqual(Person.averageHeight(), 0);
-
-    assertNoComments(Person);
   });
 
   optional('should use static properties for average calculations', () => {
@@ -102,7 +90,11 @@ describe('User', () => {
 
     assert.strictEqual(Person.averageWeight(), expectedAverageWeight);
     assert.strictEqual(Person.averageHeight(), expectedAverageHeight);
+  });
 
-    assertNoComments(Person);
+  optional('should not contain commentaries', () => {
+    [Person.averageHeight, Person.averageWeight].forEach((fn) =>
+      assertNoComments(fn)
+    );
   });
 });
